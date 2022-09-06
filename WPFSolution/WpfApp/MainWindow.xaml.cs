@@ -34,5 +34,21 @@ namespace WpfApp
             list.Add(new Person() { Id = 3, Name = "Bernard", Age = 40, Job = "Engineer" });
             grdPersons.ItemsSource = list;
         }
+
+        private void btnGrid_Click(object sender, RoutedEventArgs e)
+        {
+            //Person person = (Person)grdPersons.SelectedItem;
+            //string msg = $"Person Id={person.Id}, Name={person.Name}, Job={person.Job} ";
+            //MessageBox.Show(msg);
+
+            var list = grdPersons.SelectedItems;
+            string personasSelected = string.Empty;
+            foreach (var item in list)
+            {
+                Person person = (Person)item;
+                personasSelected+= $"Person Id={person.Id}, Name={person.Name}, Job={person.Job} " + Environment.NewLine;
+            }
+            MessageBox.Show(personasSelected);
+        }
     }
 }
