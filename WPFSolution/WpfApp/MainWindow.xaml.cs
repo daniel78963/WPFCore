@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp.Data.Entities;
 
 namespace WpfApp
 {
@@ -23,6 +24,15 @@ namespace WpfApp
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<Person> list = new List<Person>();
+            list.Add(new Person() { Id = 1, Name = "Charles", Age = 40, Job = "Author" });
+            list.Add(new Person() { Id = 2, Name = "John", Age = 40, Job = "Officer" });
+            list.Add(new Person() { Id = 3, Name = "Bernard", Age = 40, Job = "Engineer" });
+            grdPersons.ItemsSource = list;
         }
     }
 }

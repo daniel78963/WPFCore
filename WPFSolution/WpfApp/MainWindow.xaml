@@ -6,7 +6,20 @@
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Loaded="Grid_Loaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="grdPersons" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="*" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Width="auto" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Age" Width="*" Binding="{Binding Age}"/>
+                <DataGridTextColumn Header="Job" Width="*" Binding="{Binding Job}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>
