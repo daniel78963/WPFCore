@@ -41,6 +41,7 @@ namespace WpfApp.Views
             if (!string.IsNullOrEmpty(this.autoSuggestionAccount.autoTextBox.Text)
                 && (this.autoSuggestionAccount.autoTextBox.Text.Length > 1))
             {
+                GetDataAccounts();
                 this.autoSuggestionAccount.Filter = true;
                 return;
             }
@@ -49,6 +50,25 @@ namespace WpfApp.Views
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            //this.autoSuggestionAccount.AutoSuggestionList.Clear();
+            //List<string> accounts = new List<string>();
+            //accounts.Add("111");
+            //accounts.Add("1111");
+            //accounts.Add("11111");
+            //accounts.Add("123");
+            //accounts.Add("1234");
+            //accounts.Add("1212");
+            //accounts.Add("1222");
+            //accounts.Add("122");
+            //accounts.Add("12345");
+            //accounts.Add("1233");
+            //accounts.Add("222");
+            //accounts.Add("234");
+            //autoSuggestionAccount.AutoSuggestionList = accounts;
+        }
+
+        private void GetDataAccounts()
         {
             this.autoSuggestionAccount.AutoSuggestionList.Clear();
             List<string> accounts = new List<string>();
