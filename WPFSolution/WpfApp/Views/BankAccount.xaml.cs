@@ -23,5 +23,16 @@ namespace WpfApp.Views
         {
             InitializeComponent();
         }
+
+        private void autoSuggestionAccount_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.autoSuggestionAccount.AutoSuggestionList.Clear();
+            List<string> accounts = new List<string>();
+            accounts.Add("111");
+            accounts.Add("123");
+            accounts.Add("222");
+            accounts.Add("234");
+            autoSuggestionAccount.AutoSuggestionList = accounts;
+        }
     }
 }
