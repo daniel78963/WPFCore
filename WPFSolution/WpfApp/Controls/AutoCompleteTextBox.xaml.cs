@@ -19,6 +19,7 @@ namespace WpfApp.Controls
         /// </summary>  
         private List<string> autoSuggestionList = new List<string>();
 
+        private bool filter;
         #endregion
 
         public AutoCompleteTextBox()
@@ -46,7 +47,14 @@ namespace WpfApp.Controls
             set { this.autoSuggestionList = value; }
         }
 
+        public bool Filter
+        {
+            get { return this.filter; }
+            set { this.filter = value; }
+        }
+
         #endregion
+
 
         #region Open Auto Suggestion box method  
 
@@ -97,6 +105,7 @@ namespace WpfApp.Controls
         #endregion
 
         #region Auto Text Box text changed the method  
+        public event EventHandler AutoSuggestionTextChanged;
 
         /// <summary>  
         ///  Auto Text Box text changed method.  
@@ -104,6 +113,45 @@ namespace WpfApp.Controls
         /// <param name="sender">Sender parameter</param>  
         /// <param name="e">Event parameter</param>  
         private void AutoTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (this.Filter)
+            {
+                AutoSuggestionFilter();
+                return;
+            }
+
+            e.Handled = true;
+            if (AutoSuggestionTextChanged != null)
+                AutoSuggestionTextChanged(this, EventArgs.Empty);
+
+
+            //try
+            //{
+            //    // Verification.  
+            //    if (string.IsNullOrEmpty(this.autoTextBox.Text))
+            //    {
+            //        // Disable.  
+            //        this.CloseAutoSuggestionBox();
+
+            //        // Info.  
+            //        return;
+            //    }
+
+            //    // Enable.  
+            //    this.OpenAutoSuggestionBox();
+
+            //    // Settings.  
+            //    this.autoList.ItemsSource = this.AutoSuggestionList.Where(p => p.ToLower().Contains(this.autoTextBox.Text.ToLower())).ToList();
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Info.  
+            //    MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    Console.Write(ex);
+            //}
+        }
+
+        private void AutoSuggestionFilter()
         {
             try
             {
