@@ -4,10 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
+        xmlns:views = "clr-namespace:WpfApp.Views"     
+        xmlns:cntrl = "clr-namespace:WpfApp.Controls"     
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Loaded="Grid_Loaded">
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -22,5 +26,11 @@
         </DataGrid>
         <Button x:Name="btnGrid" Content="Get value" HorizontalAlignment="Left" Margin="290,52,0,0" Grid.Row="1" VerticalAlignment="Top" Height="34" Width="59" Click="btnGrid_Click"/>
 
+        <views:StudentView x:Name="StudentViewControl"
+                           Grid.Row="2" Loaded="StudentViewControl_Loaded"/>
+
+        <cntrl:AutoComplete x:Name="autoCompleteAccounts" Grid.Row="3"
+                            Loaded="AutoCompleteViewControl_Loaded"
+                            ></cntrl:AutoComplete>
     </Grid>
 </Window>

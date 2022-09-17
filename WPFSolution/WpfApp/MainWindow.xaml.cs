@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp.Controls;
 using WpfApp.Data.Entities;
 
 namespace WpfApp
@@ -49,6 +50,23 @@ namespace WpfApp
                 personasSelected+= $"Person Id={person.Id}, Name={person.Name}, Job={person.Job} " + Environment.NewLine;
             }
             MessageBox.Show(personasSelected);
+        }
+
+        private void StudentViewControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            WpfApp.ViewModel.StudentViewModel studentViewModelObject =
+               new WpfApp.ViewModel.StudentViewModel();
+            studentViewModelObject.LoadStudents();
+
+            StudentViewControl.DataContext = studentViewModelObject;
+        }
+
+        private void AutoCompleteViewControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            WpfApp.ViewModel.AutoCompleteViewModel viewModelObject =
+               new WpfApp.ViewModel.AutoCompleteViewModel();
+            viewModelObject.LoadAccounts();
+            autoCompleteAccounts.DataContext = viewModelObject;
         }
     }
 }
